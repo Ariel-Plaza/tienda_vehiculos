@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block title %} {% endblock %}
+Agregar Vehiculo
+{% block content %}
+
+<div class="text-align: center;">
+
+  <h1>Agregar Vehiculo</h1>
+</div>
+<div>
+  <form method="post">
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+{% endblock %}
