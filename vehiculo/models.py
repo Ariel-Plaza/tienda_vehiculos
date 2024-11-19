@@ -10,3 +10,4 @@ class Vehiculos(models.Model):
     precio = models.IntegerField()
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_modificacion = models.DateTimeField(auto_now=True)
+    # Crear restricion para precio

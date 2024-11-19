@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista Vehiculos{% endblock %}
+
+{% block content %}
+
+
+<h1>Listar</h1>
+
+<!-- {% if error %}
+<div class="alert alert-danger">{{error}}</div>
+{% endif %} -->
+
+{% if vehiculos %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Serial Carroceria</th>
+        <th scope="col">Serial Motor</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Condicion de Precio</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for vehiculo in vehiculos %}
+        <td>{{vehiculo.marca}}</td>
+        <td>{{vehiculo.modelo}}</td>
+        <td>{{vehiculo.serial_carroceria}}</td>
+        <td>{{vehiculo.serial_motor}}</td>
+        <td>{{vehiculo.categoria}}</td>
+        <td>{{vehiculo.precio}}</td>
+        <!-- bajo, entre 0 y 10000; Medio, para mayores de 10000 y 30000; -->
+        {% if vehiculo.precio <= 10000 %}
+        <!-- <td>{{vehiculo.precio}}</td> -->
+          <td>Bajo</td>
+        {% elif vehiculo.precio > 10000 and vehiculo.precio < 30000  %}
+          <td>Medio</td>
+        {% else %}
+          <td>Alto</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+<p>No hay vehiculos disponibles actualmente</p>
+{% endif %}
+
+<!-- <h1>Vehiculos</h1>
+<p class="lead text-center">Explora nuestras ofertas especiales</p>
+
+{% if error %}
+<div class="alert alert-danger">{{error}}</div>
+{% endif %}
+
+{% if vehiculo %}
+<h2>Vehiculos</h2>
+<ul>
+  {% for oferta in ofertas %}
+  <li>
+    {{oferta.producto.nombre}} - Precio Original: ${{oferta.producto.precio}} - Precio con Descuento:
+    ${{oferta.precio_oferta}} - Descuento: {{oferta.porcentaje_descuento}}%
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No hay ofertas disponibles actualmente</p>
+{% endif %} -->
+
+
+{% endblock %}
