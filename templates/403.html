@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Acceso Denegado
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Error 403 - Acceso Denegado</h1>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+</div>
+{% endblock %}

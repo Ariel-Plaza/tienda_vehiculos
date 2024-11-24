@@ -129,6 +129,8 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/login/'
 # configuracion de url a la que es redirigido el usuario cuando inicia sesion correctamente
 LOGIN_REDIRECT_URL = '/'
+
+HANDLER403 = 'vehiculo.views.error_403_view'

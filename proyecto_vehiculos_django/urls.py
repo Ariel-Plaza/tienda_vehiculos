@@ -20,10 +20,13 @@ from django.contrib.auth import views as auth_views
 
 from . import views
 
+handler403 = views.custom_403_view
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('vehiculo/', include('vehiculo.urls')),
-    path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    # path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
     path('usuarios/', include(('usuarios.urls', 'usuarios'), namespace='usuarios')),
 ]
+

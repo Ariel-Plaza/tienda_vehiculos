@@ -1,26 +1,28 @@
-from django.shortcuts import render
 from .forms import VehiculosForm
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from .models import Vehiculos
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
-from .models import Vehiculos
+from django.core.exceptions import PermissionDenied
+
 
 
 # Create your views here.
 @login_required()
-@permission_required('vehiculo.add_vehiculo', raise_exception=True)
-def agregar_vehiculo(request):
-    if request.method == 'POST':
-        form = VehiculosForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'El vehiculo ha sido agregado con éxito')
-            return redirect('vehiculo:agregar_vehiculo')
-    else:
-        form = VehiculosForm()
+@permission_required('vehiculo.add_vehiculos', raise_exception=True)
+def agregar_vehiculo(request): 
+    if request.method == 'POST': 
+        form = VehiculosForm(request.POST) 
+        if form.is_valid(): 
+            form.save() 
+            messages.success(request, 'El vehículo ha sido agregado con éxito') 
+            return redirect('vehiculo:agregar_vehiculo') 
+    else: 
+        form = VehiculosForm() 
     return render(request, 'vehiculo/agregar.html', {'form': form})
 
+@login_required()
+@permission_required('vehiculo.view_vehiculos', raise_exception=True)
 def listar(request):
     vehiculos = []
     try: 
@@ -29,7 +31,7 @@ def listar(request):
         vehiculos = Vehiculos.objects.all()
         # vehiculos = Vehiculos
         if not vehiculos:
-             raise ValueError("No hay vehiculos en este momento.")
+            raise ValueError("No hay vehiculos en este momento.")
     except Exception as e:
         return render(request, 'vehiculo/listar.html'),{'error': 'Se produjo un error inesperado.'}
     context={

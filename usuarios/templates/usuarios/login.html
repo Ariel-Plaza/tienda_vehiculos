@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %} Registro {% endblock %}
+
+{% block content %}
+<h1>Iniciar Sesion</h1>
+<!-- envio de formulario -->
+<form class="form" method="POST">
+  <!-- seguridad para evitar ataques cruzados con token -->
+  {% csrf_token %}
+  <!-- metodo renderizar formulario dentro de un parrafo -->
+  {{form.as_p}}
+  <button type="submit" class="btn- btn-primary">Ingresar</button>
+</form>
+{% endblock %}

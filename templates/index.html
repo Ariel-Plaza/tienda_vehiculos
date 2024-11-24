@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Pagina Principal{% endblock %}
 
 {% block content %}
-<h1>Catalogo de Vehiculos</h1>
+<h1 class="text-center">Catalogo de Vehiculos</h1>
+<div class="container-fluid text-center">
+    <img src="{% static 'img/102.jpg' %}" alt="imagen catalogo vehiculos" >
+</div>
 {% endblock %}
